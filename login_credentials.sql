@@ -10,11 +10,13 @@ CREATE TABLE loginDB.`login_credentials` (
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `role` enum('admin','faculty', 'student') NOT NULL
+  `role` enum('admin','faculty', 'student') NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE loginDB.`login_credentials`
   ADD PRIMARY KEY (`email`);
+
+ALTER TABLE loginDB.`login_credentials` ADD `resettoken` varchar(255) NULL AFTER `password`, ADD `resettokenexpire` DATE NULL AFTER `resettoken`;
 
 INSERT INTO loginDB.`login_credentials` (`fullname`, `username`, `email`, `password`, `role`) VALUES
 ('russel', 'russel', 'russel@gmail.com', 'password', 'admin'),
